@@ -1,0 +1,35 @@
+{
+  "name": "snapp-darknet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exec": "tsc && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Makalfo/snapp-darknet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Makalfo/snapp-darknet/issues"
+  },
+  "engines": {
+    "node": ">=16.4.0"
+  },
+  "homepage": "https://github.com/Makalfo/snapp-darknet#readme",
+  "dependencies": {
+    "prettier": "^2.5.0",
+    "require": "^2.4.20",
+    "snarkyjs": "^0.1.11",
+    "typescript": "^4.5.2",
+    "crypto-js": "^4.1.1",
+    "csv-parser": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.12"
+  }
+}
