@@ -1,4 +1,4 @@
-# SNAPP Darknet Example
+# SNAPP DogNet
 SNAPP Utilizing the YOLO V3 Model to Detect Objects
 
 ## Description
@@ -11,6 +11,7 @@ pass the circuits and allow for the reward call.
 #### Reward Objects: <br>
 `['bicycle', 'truck', 'dog', 'horse', 'giraffe', 'zebra']`
 
+## Test Scenarios:
 The SNAPP is broken down into 6 test cases as follows:
 
 ### Test 1: <br>
@@ -51,7 +52,7 @@ the test cases but it does not appear to be working. It is likely due to
 a missed call that is necessary to emulate the next block, etc. Or perhaps
 the datatype used in the SNAPP is not working with the setter / getter properly.
 Due to this, the overlap check will fail and the test 6 also fails as the states were not
-changed between steps 1 and 2.
+accumulating properly as expected between the steps.
 
 2) The idea behind the SNAPP was to show that it is possible 
 to integrate outside resources into a SNAPP such as a tensorflow 
@@ -90,3 +91,8 @@ to the current folder depending on architecture <br>
 ### Step 5: <br>
 Run the snapp <br>
 `npx tsc && node build/index.js`
+
+## Work to Go:
+1) Determine why the state changes between the test cases do not appear to reflect via setters / getters
+2) Implement the reward transactions, etc.
+3) Investigate implementing basic neural network activation functions and neurons into snarkjs...
