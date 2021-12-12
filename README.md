@@ -11,6 +11,7 @@ pass the circuits and allow for the reward call.
 #### Reward Objects: <br>
 `['bicycle', 'truck', 'dog', 'horse', 'giraffe', 'zebra']`
 
+## Test Scenarios:
 The SNAPP is broken down into 6 test cases as follows:
 
 ### Test 1: <br>
