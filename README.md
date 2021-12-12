@@ -65,7 +65,7 @@ model predictions to fool the SNAPP.
 
 ### Step 1: <br>
 Clone and go into the repository <br>
-`git clone git@github.com:Makalfo/snapp-darknet.git`
+`git clone git@github.com:Makalfo/snapp-darknet.git`<br>
 `cd snapp-darknet`
 
 ### Step 2: <br>
@@ -73,7 +73,7 @@ Clone and go into the repository <br>
 
 ### Step 3: <br>
 Download the weights file and move it into the cfg folder: <br>
-`wget https://pjreddie.com/media/files/yolov3.weights`
+`wget https://pjreddie.com/media/files/yolov3.weights`<br>
 `mv yolov3.weights ./cfg/`
 
 ### Step 4: <br>
