@@ -22,12 +22,13 @@
   },
   "homepage": "https://github.com/Makalfo/snapp-darknet#readme",
   "dependencies": {
+    "crypto-js": "^4.1.1",
+    "csv-parser": "^3.0.0",
     "prettier": "^2.5.0",
     "require": "^2.4.20",
     "snarkyjs": "^0.1.11",
-    "typescript": "^4.5.2",
-    "crypto-js": "^4.1.1",
-    "csv-parser": "^3.0.0"
+    "tsc": "^2.0.3",
+    "typescript": "^4.5.3"
   },
   "devDependencies": {
     "@types/node": "^16.11.12"

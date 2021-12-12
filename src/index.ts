@@ -30,7 +30,7 @@ class Model {
 
   constructor( ) {
     // let's set some constants
-    this.model = './darknet';
+    this.model = './bin/darknet.macos';
     this.operation = 'detect';
     this.config_file = './cfg/yolov3.cfg';
     this.weight_file = './cfg/yolov3.weights';
@@ -114,7 +114,7 @@ class DogSnapp extends SmartContract {
   // Field State of 80 bit representation
   @state(Field) state: State<Field>;  // stored state
   model: Model;                       // model object
-  reward_objects: Array<string>;      // objects to allow for minting
+  reward_objects: Array<string>;      // objects to allow for reward call
 
   constructor(initialBalance: UInt64, address: PublicKey, init_state: Field, model: Model) {
     super(address);
@@ -160,7 +160,6 @@ class DogSnapp extends SmartContract {
     // 1. Get the current state
     const state = await this.state.get();
     const state_bits = state.toBits(80);
-    console.log( state_bits );
 
     // 2. Get the labels 
     // the labels only really correspond when the model is run
@@ -187,7 +186,6 @@ class DogSnapp extends SmartContract {
     for (let i = 0; i < labels.length; i++) {
       new_state_bits[ i ] = Circuit.if( Bool.not( result_bits[ i ] ), state_bits[ i ], new Bool( true ) );
     }
-    console.log( new_state_bits );
     let new_state = Field.ofBits( new_state_bits );
 
     // 6. Save the results 
@@ -235,7 +233,7 @@ export async function runSimpleApp() {
 //////////////////////////////// Test 1 ////////////////////////////////
   // Test 1: The initial state of the SNAPP is 0. Run the SNAPP on an image
   // of a dog, bike, and truck. It will pass all conditions and update the state
-  // of the SNAPP to the corresponding bits in the bitarray 
+  // of the SNAPP to the corresponding bits in the bit array 
   console.log( 'Test 1 - Start:', image_1 );
   await Mina.transaction( account1, async () => {
     await snappInstance.check_object( image_1 );
@@ -250,7 +248,7 @@ export async function runSimpleApp() {
 //////////////////////////////// Test 2 ////////////////////////////////
   // Test 2: Run the SNAPP on an image of a person, horse, and dog.
   // The test will actually fail because over the overlap of Test 1 where
-  //  there was a dog present in both photos. The state will remain 
+  //  there was a dog present in both photos. The state will remain unchanged
   console.log( 'Test 2 - Start:', image_2 );
   await Mina.transaction( account1, async () => {
     await snappInstance.check_object( image_2 );
