@@ -140,12 +140,12 @@ class DogSnapp extends SmartContract {
   @method async get_reward() {
     // get the reward
 
-    // 1. Get the current state
-    const state = await this.state.get();
-    const state_bits = state.toBits(80);
-    
-    // 2. Get the labels 
+    // 1. Get the labels 
     const labels = await this.get_labels( )
+
+    // 2. Get the current state
+    const state = await this.state.get();
+    const state_bits = state.toBits( labels.length );
 
     // 3. Verify all objects have been detected in the list
     for (let i = 0; i < this.reward_objects.length; i++) {
@@ -157,17 +157,17 @@ class DogSnapp extends SmartContract {
   @method async check_object( image: string ) {
     // the method will run the model on the specified image
 
-    // 1. Get the current state
-    const state = await this.state.get();
-    const state_bits = state.toBits(80);
-
-    // 2. Get the labels 
+    // 1. Get the labels 
     // the labels only really correspond when the model is run
     const labels = await this.get_labels( ) // TODO: make attribute
+
+    // 2. Get the current state
+    const state = await this.state.get();
+    const state_bits = state.toBits( labels.length );
     
     // 3. Run the model and convert the results to the bit array
     const results = await this.run_model( image );
-    let result_bits = results.toBits(80)
+    let result_bits = results.toBits( labels.length )
 
     // 4. Verify that there is no overlap at all in the objects 
     let overlap = Array<Bool>();
