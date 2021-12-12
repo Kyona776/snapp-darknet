@@ -91,3 +91,8 @@ to the current folder depending on architecture <br>
 ### Step 5: <br>
 Run the snapp <br>
 `npx tsc && node build/index.js`
+
+## Work to Go:
+1) Determine why the state changes between the test cases do not appear to reflect via setters / getters
+2) Implement the reward transactions, etc.
+3) Investigate implementing basic neural network activation functions and neurons into snarkjs...
