@@ -114,11 +114,14 @@ class DogSnapp extends SmartContract {
   // Field State of 80 bit representation
   @state(Field) state: State<Field>;  // stored state
   model: Model;                       // model object
+  reward_balance: UInt64;             // balance for the reward
   reward_objects: Array<string>;      // objects to allow for reward call
 
   constructor(initialBalance: UInt64, address: PublicKey, init_state: Field, model: Model) {
     super(address);
-    this.balance.addInPlace(initialBalance);
+    // intial balance for the reward
+    this.reward_balance = initialBalance;
+    this.balance.addInPlace( this.reward_balance );
 
     // set the initial values
     this.state = State.init(init_state);
@@ -152,6 +155,10 @@ class DogSnapp extends SmartContract {
       console.log( ' Verifying', this.reward_objects[ i ], 'is in current state.' );
       Bool.and( state_bits[ labels.indexOf( this.reward_objects[ i ] ) ], Bool( true ) ).assertEquals(true);
     }
+
+    // 4. Allow for the amount to be claimed
+    this.balance.subInPlace(this.reward_balance );
+
   }
 
   @method async check_object( image: string ) {
@@ -209,7 +216,7 @@ export async function runSimpleApp() {
   let image_4 = './images/giraffe.jpg';   // Used in SNAPP Test 4 - Test will add the giraffe and zebra to the state
   let image_5 = './images/horses.jpg';    // Used in SNAPP Test 5 - Test will add the horse to the state
 
-  // create two accounts to make the bets in an alternating manner
+  // create two accounts
   const account1 = Local.testAccounts[0].privateKey;
   const account2 = Local.testAccounts[1].privateKey;
 
@@ -304,10 +311,12 @@ export async function runSimpleApp() {
 
 //////////////////////////////// Test 6 ////////////////////////////////
   // Test 6: Obtain the reward
-  // TODO: add the transaction
   console.log( 'Test 6 - Start:', image_5 );
   await Mina.transaction( account1, async () => {
     await snappInstance.get_reward( );
+    Party.createUnsigned(account1.toPublicKey()).balance.addInPlace(
+      UInt64.fromNumber(1000000000)
+    );
     })
     .send()
     .wait()
