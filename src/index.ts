@@ -235,7 +235,7 @@ export async function runSimpleApp() {
 //////////////////////////////// Test 1 ////////////////////////////////
   // Test 1: The initial state of the SNAPP is 0. Run the SNAPP on an image
   // of a dog, bike, and truck. It will pass all conditions and update the state
-  // of the SNAPP to 65538 as those as the corresponding bits in the bitarray 
+  // of the SNAPP to the corresponding bits in the bitarray 
   console.log( 'Test 1 - Start:', image_1 );
   await Mina.transaction( account1, async () => {
     await snappInstance.check_object( image_1 );
