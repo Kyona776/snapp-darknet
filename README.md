@@ -88,5 +88,5 @@ to the current folder depending on architecture <br>
 `ln -ls ./bin/darknet.linux .`
 
 ### Step 5: <br>
-Run the snap <br>
+Run the snapp <br>
 `npx tsc && node build/index.js`
