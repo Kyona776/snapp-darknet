@@ -51,7 +51,7 @@ the test cases but it does not appear to be working. It is likely due to
 a missed call that is necessary to emulate the next block, etc. Or perhaps
 the datatype used in the SNAPP is not working with the setter / getter properly.
 Due to this, the overlap check will fail and the test 6 also fails as the states were not
-changed between steps 1 and 2.
+accumulating properly as expected between the steps.
 
 2) The idea behind the SNAPP was to show that it is possible 
 to integrate outside resources into a SNAPP such as a tensorflow 
