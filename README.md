@@ -8,6 +8,9 @@ classification on the image. Once the objects have been detected
 compared to the following list, the `get_reward` method should 
 pass the circuits and allow for the reward call.
 
+#### Reward Objects: <br>
+`['bicycle', 'truck', 'dog', 'horse', 'giraffe', 'zebra']`
+
 The SNAPP is broken down into 6 test cases as follows:
 
 ### Test 1: <br>
