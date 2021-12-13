@@ -30,7 +30,7 @@ class Model {
 
   constructor( ) {
     // let's set some constants
-    this.model = './bin/darknet.macos';
+    this.model = './darknet';
     this.operation = 'detect';
     this.config_file = './cfg/yolov3.cfg';
     this.weight_file = './cfg/yolov3.weights';

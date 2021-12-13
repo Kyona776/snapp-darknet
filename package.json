@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "exec": "tsc && node dist/index.js"
+    "exec": "tsc && node build/index.js"
   },
   "repository": {
     "type": "git",
