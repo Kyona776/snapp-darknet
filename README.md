@@ -1,5 +1,7 @@
 # SNAPP DogNet
 SNAPP Utilizing the YOLO V3 Model to Detect Objects
+Work in Progress / Proof of Concept 
+Not Productization Ready
 
 ## Description
 The SNAPP has the premise of feeding in images where the it 
